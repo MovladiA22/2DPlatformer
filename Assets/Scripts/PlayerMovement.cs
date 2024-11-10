@@ -1,22 +1,20 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
-    private const string RunAnim = "IsRan";
 
     [SerializeField] float _speed;
+    [SerializeField] PlayerAnimator _animator;
 
-    private Animator _animator;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
+    float _angleOfRotationY = 0f;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -36,17 +34,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveHorizontal > 0)
         {
-            _spriteRenderer.flipX = false;
-            _animator.SetBool(RunAnim, true);
+            _angleOfRotationY = 0f;
+            _animator.ActivateRunning();
         }
         else if (moveHorizontal < 0)
         {
-            _spriteRenderer.flipX = true;
-            _animator.SetBool(RunAnim, true);
+            _angleOfRotationY = 180f;
+            _animator.ActivateRunning();
         }
         else
         {
-            _animator.SetBool(RunAnim, false);
+            _animator.DeactivateRunning();
         }
+
+        transform.eulerAngles = new Vector2(0.0f, _angleOfRotationY);
     }
 }

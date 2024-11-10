@@ -29,7 +29,9 @@ public class RouteMover : MonoBehaviour
 
     public void SwitchToNextPoint()
     {
+        float angleOfRotationY = 180f;
+
         _indexOfCurrentPoint = ++_indexOfCurrentPoint % _routePoints.Length;
-        _spriteRenderer.flipX = !_spriteRenderer.flipX;
+        transform.Rotate(new Vector2(0.0f, angleOfRotationY));
     }
 }
