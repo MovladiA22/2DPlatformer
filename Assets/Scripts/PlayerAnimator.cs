@@ -3,16 +3,25 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerMovement _playerMovement;
 
     private readonly int IsRan = Animator.StringToHash(nameof(IsRan));
 
-    public void ActivateRunning()
+    private void OnEnable()
     {
-        _animator.SetBool(IsRan, true);
+        _playerMovement.Ran += ToggleRunning;
     }
 
-    public void DeactivateRunning()
+    private void OnDisable()
     {
-        _animator.SetBool(IsRan, false);
+        _playerMovement.Ran -= ToggleRunning;
+    }
+
+    private void ToggleRunning(float direction)
+    {
+        if (direction == 0)
+            _animator.SetBool(IsRan, false);
+        else
+            _animator.SetBool(IsRan, true);
     }
 }

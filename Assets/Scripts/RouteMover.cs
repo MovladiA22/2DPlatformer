@@ -1,18 +1,11 @@
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
 public class RouteMover : MonoBehaviour
 {
     [SerializeField] private Transform[] _routePoints;
     [SerializeField] private float _speed;
 
-    private SpriteRenderer _spriteRenderer;
     private int _indexOfCurrentPoint;
-
-    private void Awake()
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
 
     private void Update()
     {

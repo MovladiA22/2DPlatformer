@@ -1,52 +1,45 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
 
-    [SerializeField] float _speed;
-    [SerializeField] PlayerAnimator _animator;
+    [SerializeField] private float _speed;
+    [SerializeField] private PlayerInput _playerInput;
 
+    public event Action<float> Ran;
     private Rigidbody2D _rigidbody;
-    private SpriteRenderer _spriteRenderer;
-    float _angleOfRotationY = 0f;
+    private float _angleOfRotationY = 0f;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        Move();
+        _playerInput.MovedHorizontally += Move;
     }
 
-    private void Move()
+    private void OnDisable()
     {
-        float moveHorizontal = Input.GetAxis(Horizontal);
+        _playerInput.MovedHorizontally -= Move;
+    }
+
+    private void Move(float moveHorizontal)
+    {
         Vector2 movement = _rigidbody.velocity;
-
         movement.x = moveHorizontal * _speed * Time.fixedDeltaTime;
         _rigidbody.velocity = movement;
 
         if (moveHorizontal > 0)
-        {
             _angleOfRotationY = 0f;
-            _animator.ActivateRunning();
-        }
         else if (moveHorizontal < 0)
-        {
             _angleOfRotationY = 180f;
-            _animator.ActivateRunning();
-        }
-        else
-        {
-            _animator.DeactivateRunning();
-        }
 
+        Ran?.Invoke(moveHorizontal);
         transform.eulerAngles = new Vector2(0.0f, _angleOfRotationY);
     }
 }

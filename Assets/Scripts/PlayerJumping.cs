@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerJumping : MonoBehaviour
 {
     [SerializeField] private float _jumpHeight;
+    [SerializeField] private PlayerInput _playerInput;
 
     private Rigidbody2D _rigidbody;
     private bool _isGrounded;
@@ -13,9 +14,14 @@ public class PlayerJumping : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        Jump();
+        _playerInput.PressedSpace += Jump;
+    }
+
+    private void OnDisable()
+    {
+        _playerInput.PressedSpace -= Jump;
     }
 
     private void OnCollisionEnter2D()
@@ -30,9 +36,7 @@ public class PlayerJumping : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
-        {
+        if (_isGrounded)
             _rigidbody.AddForce(new Vector2(0, _jumpHeight), ForceMode2D.Impulse);
-        }
     }
 }
