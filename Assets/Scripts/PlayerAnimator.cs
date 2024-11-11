@@ -9,19 +9,14 @@ public class PlayerAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerMovement.Ran += ToggleRunning;
+        _playerMovement.Run += ToggleRunning;
     }
 
     private void OnDisable()
     {
-        _playerMovement.Ran -= ToggleRunning;
+        _playerMovement.Run -= ToggleRunning;
     }
 
-    private void ToggleRunning(float direction)
-    {
-        if (direction == 0)
-            _animator.SetBool(IsRan, false);
-        else
-            _animator.SetBool(IsRan, true);
-    }
+    private void ToggleRunning(float direction) =>
+        _animator.SetBool(IsRan, direction != 0);
 }

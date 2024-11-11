@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerJumping : MonoBehaviour
+public class PlayerJumper : MonoBehaviour
 {
     [SerializeField] private float _jumpHeight;
     [SerializeField] private PlayerInput _playerInput;

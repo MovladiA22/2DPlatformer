@@ -9,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private PlayerInput _playerInput;
 
-    public event Action<float> Ran;
     private Rigidbody2D _rigidbody;
     private float _angleOfRotationY = 0f;
+
+    public event Action<float> Run;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         else if (moveHorizontal < 0)
             _angleOfRotationY = 180f;
 
-        Ran?.Invoke(moveHorizontal);
+        Run?.Invoke(moveHorizontal);
         transform.eulerAngles = new Vector2(0.0f, _angleOfRotationY);
     }
 }
