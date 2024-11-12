@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerJumper : MonoBehaviour
 {
+    private const string GroundTag = "Ground";
+
     [SerializeField] private float _jumpHeight;
     [SerializeField] private PlayerInput _playerInput;
 
@@ -24,14 +26,16 @@ public class PlayerJumper : MonoBehaviour
         _playerInput.PressedSpace -= Jump;
     }
 
-    private void OnCollisionEnter2D()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isGrounded = true;
+        if (collision.gameObject.CompareTag(GroundTag))
+            _isGrounded = true;
     }
 
-    private void OnCollisionExit2D()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        _isGrounded = false;
+        if (collision.gameObject.CompareTag(GroundTag))
+            _isGrounded = false;
     }
 
     private void Jump()

@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _angleOfRotationY = 0f;
 
-    public event Action<float> Run;
+    public event Action<bool> Run;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         else if (moveHorizontal < 0)
             _angleOfRotationY = 180f;
 
-        Run?.Invoke(moveHorizontal);
+        Run?.Invoke(Convert.ToBoolean(moveHorizontal));
         transform.eulerAngles = new Vector2(0.0f, _angleOfRotationY);
     }
 }

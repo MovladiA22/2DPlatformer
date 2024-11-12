@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PlayerAnimator : MonoBehaviour
+public class BanditAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private BanditMover _banditMover;
     [SerializeField] private Warrior _warrior;
 
     private readonly int IsRan = Animator.StringToHash(nameof(IsRan));
@@ -11,13 +11,13 @@ public class PlayerAnimator : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerMovement.Run += ToggleRunning;
+        _banditMover.Run += ToggleRunning;
         _warrior.Attacked += ActivateAttack;
     }
 
     private void OnDisable()
     {
-        _playerMovement.Run -= ToggleRunning;
+        _banditMover.Run -= ToggleRunning;
         _warrior.Attacked -= ActivateAttack;
     }
 
