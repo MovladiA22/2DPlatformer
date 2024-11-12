@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Warrior : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _health;
+    [SerializeField] private CharactersHealth _health;
     [SerializeField] private int _damage;
     [SerializeField] private float _attackDelay;
 
@@ -21,18 +20,10 @@ public class Warrior : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount)
     {
-        if (_health - amount <= 0)
+        if (_health.Value - amount <= 0)
             Destroy(gameObject);
 
-        _health -= amount;
-    }
-
-    public void ReplenishHealth(int amount)
-    {
-        if (_health + amount >= _maxHealth)
-            _health = _maxHealth;
-        else
-            _health += amount;
+        _health.LostHealth(amount);
     }
 
     private IEnumerator Attack(IDamageable damageable)

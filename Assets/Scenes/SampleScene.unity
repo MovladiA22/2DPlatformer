@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 116960149}
   - component: {fileID: 116960150}
   - component: {fileID: 116960151}
+  - component: {fileID: 116960152}
   m_Layer: 0
   m_Name: Bandit1
   m_TagString: Untagged
@@ -369,8 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a71857667427f44a569b20f8c80dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 40
-  _health: 40
+  _health: {fileID: 116960152}
   _damage: 10
   _attackDelay: 2
 --- !u!114 &116960151
@@ -388,6 +388,21 @@ MonoBehaviour:
   _animator: {fileID: 116960148}
   _banditMover: {fileID: 116960149}
   _warrior: {fileID: 116960150}
+--- !u!114 &116960152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116960143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0485893fa2ce7c743b45075a714032d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collector: {fileID: 0}
+  _maxHealth: 40
+  _health: 40
 --- !u!1 &153286697
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74e342f0896e4a409dd681ca0ec6696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 25
+  <Value>k__BackingField: 25
 --- !u!212 &589309469
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -830,7 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd1f848c15fd0e449cad0d9d782265d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 1
+  <Value>k__BackingField: 1
 --- !u!58 &602718388
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -919,6 +934,7 @@ GameObject:
   - component: {fileID: 784111638}
   - component: {fileID: 784111639}
   - component: {fileID: 784111640}
+  - component: {fileID: 784111641}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1116,6 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bfab1252ca55441aa5bec905d25d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collector: {fileID: 784111636}
 --- !u!114 &784111636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,8 +1145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f166b9e7375c34b41a493471f518f4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallet: {fileID: 784111635}
-  _warrior: {fileID: 784111639}
 --- !u!114 &784111638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,8 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a71857667427f44a569b20f8c80dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _health: 50
+  _health: {fileID: 784111641}
   _damage: 10
   _attackDelay: 2
 --- !u!114 &784111640
@@ -1173,6 +1187,21 @@ MonoBehaviour:
   _animator: {fileID: 784111632}
   _playerMovement: {fileID: 784111633}
   _warrior: {fileID: 784111639}
+--- !u!114 &784111641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784111627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0485893fa2ce7c743b45075a714032d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collector: {fileID: 784111636}
+  _maxHealth: 50
+  _health: 50
 --- !u!1 &786531417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1370,7 @@ GameObject:
   - component: {fileID: 1139693479}
   - component: {fileID: 1139693478}
   - component: {fileID: 1139693477}
+  - component: {fileID: 1139693482}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Ground
@@ -2412,6 +2442,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1139693482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139693475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4eadf94e9b2553459906958b5390f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256781734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,7 +2583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd1f848c15fd0e449cad0d9d782265d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 1
+  <Value>k__BackingField: 1
 --- !u!58 &1269340418
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2716,6 +2758,7 @@ GameObject:
   - component: {fileID: 1514556748}
   - component: {fileID: 1514556749}
   - component: {fileID: 1514556750}
+  - component: {fileID: 1514556751}
   m_Layer: 0
   m_Name: Bandit2
   m_TagString: Untagged
@@ -2902,8 +2945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a71857667427f44a569b20f8c80dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _health: 50
+  _health: {fileID: 1514556751}
   _damage: 10
   _attackDelay: 2
 --- !u!114 &1514556750
@@ -2921,6 +2963,21 @@ MonoBehaviour:
   _animator: {fileID: 1514556747}
   _banditMover: {fileID: 1514556748}
   _warrior: {fileID: 1514556749}
+--- !u!114 &1514556751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514556742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0485893fa2ce7c743b45075a714032d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collector: {fileID: 0}
+  _maxHealth: 40
+  _health: 40
 --- !u!1 &1562162415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,7 +3111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd1f848c15fd0e449cad0d9d782265d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 1
+  <Value>k__BackingField: 1
 --- !u!58 &1619768213
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3136,7 +3193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74e342f0896e4a409dd681ca0ec6696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 25
+  <Value>k__BackingField: 25
 --- !u!212 &1681000538
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,30 +1,21 @@
+using System;
 using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    [SerializeField] private Wallet _wallet;
-    [SerializeField] private Warrior _warrior;
+    public event Action<Money> PickedUpMoney;
+    public event Action<Health> PickedUpHealth;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PickUpMoney(collision);
-        PickUpHealth(collision);
-    }
-
-    private void PickUpMoney(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Money money))
+        if (collision.gameObject.TryGetComponent(out ISelected selected))
         {
-            _wallet.AddMoney(money.Value);
-            Destroy(collision.gameObject);
-        }
-    }
+            if (collision.gameObject.TryGetComponent(out Money money))
+                PickedUpMoney?.Invoke(money);
 
-    private void PickUpHealth(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Health health))
-        {
-            _warrior.ReplenishHealth(health.Value);
+            if (collision.gameObject.TryGetComponent(out Health health))
+                PickedUpHealth?.Invoke(health);
+
             Destroy(collision.gameObject);
         }
     }

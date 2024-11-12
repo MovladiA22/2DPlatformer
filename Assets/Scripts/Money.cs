@@ -1,8 +1,6 @@
 using UnityEngine;
 
-public class Money : MonoBehaviour
+public class Money : MonoBehaviour, ISelected
 {
-    [SerializeField] private int _value;
-
-    public int Value => _value;
+    [field: SerializeField] public int Value { get; private set; }
 }

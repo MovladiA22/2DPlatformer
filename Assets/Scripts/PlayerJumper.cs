@@ -28,13 +28,13 @@ public class PlayerJumper : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(GroundTag))
+        if (collision.gameObject.TryGetComponent<Ground>(out Ground ground))
             _isGrounded = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(GroundTag))
+        if (collision.gameObject.TryGetComponent<Ground>(out Ground ground))
             _isGrounded = false;
     }
 
