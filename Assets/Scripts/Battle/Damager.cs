@@ -8,9 +8,15 @@ public class Damager : MonoBehaviour, IDamageable
     [SerializeField] private int _damage;
     [SerializeField] private float _attackDelay;
 
+    private YieldInstruction _wait;
     private bool _isFinishedAttack = true;
 
     public event Action Attacked;
+
+    private void Awake()
+    {
+        _wait = new WaitForSeconds(_attackDelay);
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -35,7 +41,7 @@ public class Damager : MonoBehaviour, IDamageable
         Attacked?.Invoke();
         damageable.TakeDamage(_damage);
 
-        yield return new WaitForSeconds(_attackDelay);
+        yield return _wait;
         _isFinishedAttack = true;
     }
 }

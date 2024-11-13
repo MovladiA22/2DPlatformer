@@ -17,5 +17,5 @@ public class Wallet : MonoBehaviour
     }
 
     public void AddMoney(Money money) =>
-        _money = money.Value;
+        _money += money.Value;
 }

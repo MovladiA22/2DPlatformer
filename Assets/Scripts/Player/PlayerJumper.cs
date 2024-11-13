@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerJumper : MonoBehaviour
 {
-    private const string GroundTag = "Ground";
-
     [SerializeField] private float _jumpHeight;
     [SerializeField] private PlayerInput _playerInput;
 

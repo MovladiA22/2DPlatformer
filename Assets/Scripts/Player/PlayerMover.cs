@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
-    private const string Horizontal = nameof(Horizontal);
-
     [SerializeField] private float _speed;
     [SerializeField] private PlayerInput _playerInput;
 
@@ -40,7 +38,7 @@ public class PlayerMover : MonoBehaviour
         else if (moveHorizontal < 0)
             _angleOfRotationY = 180f;
 
-        Run?.Invoke(Convert.ToBoolean(moveHorizontal));
+        Run?.Invoke(moveHorizontal != 0);
         transform.eulerAngles = new Vector2(0.0f, _angleOfRotationY);
     }
 }

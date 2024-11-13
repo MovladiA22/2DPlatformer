@@ -4,8 +4,8 @@ using UnityEngine;
 public class BanditMover : MonoBehaviour
 {
     [SerializeField] private Transform[] _routePoints;
-    [SerializeField] private float _speed;
     [SerializeField] private BanditsZone _banditsZone;
+    [SerializeField] private float _speed;
 
     private Transform _player;
     private int _indexOfCurrentPoint;
@@ -16,10 +16,10 @@ public class BanditMover : MonoBehaviour
 
     private void Update()
     {
-        Run?.Invoke(!_isCollided);
+        Run?.Invoke(_isCollided == false);
 
         if (_isCollided == false)
-            MoveToPoint();
+            MoveToTarget();
     }
 
     private void OnEnable()
@@ -44,18 +44,17 @@ public class BanditMover : MonoBehaviour
         _isCollided = false;
     }
 
-    private void MoveToPoint()
+    private void MoveToTarget()
     {
         Vector2 target = _routePoints[_indexOfCurrentPoint].position;
 
         if (_isPlayerTrigger && _player != null)
             target = _player.position;
+        else if (transform.position == _routePoints[_indexOfCurrentPoint].position)
+            SwitchToNextPoint();
 
         TurnToTarget(target);
         transform.position = Vector2.MoveTowards(transform.position, target, _speed * Time.deltaTime);
-
-        if (transform.position == _routePoints[_indexOfCurrentPoint].position)
-            SwitchToNextPoint();
     }
 
     private void GetIsPlayerEntered(Transform player)

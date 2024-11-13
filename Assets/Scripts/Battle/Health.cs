@@ -7,17 +7,21 @@ public class Health : MonoBehaviour
 
     public int Value => _health;
 
-    public void LostHealth(int amount) =>
+    public void LostHealth(int amount)
+    {
+        if (amount < 0)
+            amount = 0;
+
         _health -= amount;
+        _health = Mathf.Clamp(_health, 0, _maxHealth);
+    }
 
     public void ReplenishHealth(int health)
     {
         if (health < 0)
             health = 0;
 
-        if (_health + health >= _maxHealth)
-            _health = _maxHealth;
-        else
-            _health += health;
+        _health += health;
+        _health = Mathf.Clamp(_health, 0, _maxHealth);
     }
 }

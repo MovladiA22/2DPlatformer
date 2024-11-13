@@ -356,8 +356,8 @@ MonoBehaviour:
   _routePoints:
   - {fileID: 1256781735}
   - {fileID: 2002266546}
-  _speed: 1.5
   _banditsZone: {fileID: 1062981053}
+  _speed: 1.5
 --- !u!114 &116960151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78267d172b82c1a4f85e4c4aefec2cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 55
+  _speed: 100
   _playerInput: {fileID: 784111641}
 --- !u!114 &784111638
 MonoBehaviour:
@@ -2930,8 +2930,8 @@ MonoBehaviour:
   _routePoints:
   - {fileID: 2065595258}
   - {fileID: 848168892}
-  _speed: 1.5
   _banditsZone: {fileID: 1428036873}
+  _speed: 1.5
 --- !u!114 &1514556750
 MonoBehaviour:
   m_ObjectHideFlags: 0

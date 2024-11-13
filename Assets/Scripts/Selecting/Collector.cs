@@ -11,10 +11,10 @@ public class Collector : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out ISelected selected))
         {
-            if (collision.gameObject.TryGetComponent(out Money money))
+            if (selected is Money money)
                 PickedUpMoney?.Invoke(money);
 
-            if (collision.gameObject.TryGetComponent(out MedKit medKit))
+            if (selected is MedKit medKit)
                 _health.ReplenishHealth(medKit.Value);
 
             Destroy(collision.gameObject);
