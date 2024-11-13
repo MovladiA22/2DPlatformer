@@ -3,22 +3,22 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private PlayerMovement _playerMovement;
-    [SerializeField] private Warrior _warrior;
+    [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private Damager _damager;
 
     private readonly int IsRan = Animator.StringToHash(nameof(IsRan));
     private readonly int Attack = Animator.StringToHash(nameof(Attack));
 
     private void OnEnable()
     {
-        _playerMovement.Run += ToggleRunning;
-        _warrior.Attacked += ActivateAttack;
+        _playerMover.Run += ToggleRunning;
+        _damager.Attacked += ActivateAttack;
     }
 
     private void OnDisable()
     {
-        _playerMovement.Run -= ToggleRunning;
-        _warrior.Attacked -= ActivateAttack;
+        _playerMover.Run -= ToggleRunning;
+        _damager.Attacked -= ActivateAttack;
     }
 
     private void ToggleRunning(bool isRan) =>

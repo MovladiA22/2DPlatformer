@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Warrior : MonoBehaviour, IDamageable
+public class Damager : MonoBehaviour, IDamageable
 {
-    [SerializeField] private CharactersHealth _health;
+    [SerializeField] private Health _health;
     [SerializeField] private int _damage;
     [SerializeField] private float _attackDelay;
 
@@ -20,6 +20,9 @@ public class Warrior : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount)
     {
+        if (amount < 0)
+            amount = 0;
+
         if (_health.Value - amount <= 0)
             Destroy(gameObject);
 

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
 

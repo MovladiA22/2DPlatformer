@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
+    [SerializeField] private Health _health;
+
     public event Action<Money> PickedUpMoney;
-    public event Action<Health> PickedUpHealth;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -13,8 +14,8 @@ public class Collector : MonoBehaviour
             if (collision.gameObject.TryGetComponent(out Money money))
                 PickedUpMoney?.Invoke(money);
 
-            if (collision.gameObject.TryGetComponent(out Health health))
-                PickedUpHealth?.Invoke(health);
+            if (collision.gameObject.TryGetComponent(out MedKit medKit))
+                _health.ReplenishHealth(medKit.Value);
 
             Destroy(collision.gameObject);
         }

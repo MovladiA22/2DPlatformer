@@ -11,12 +11,6 @@ public class PlayerInput : MonoBehaviour
     public event Action<float> MovedHorizontally;
     public event Action PressedSpace;
 
-    private void Update()
-    {
-        _direction = Input.GetAxis(Horizontal);
-        _pressedSpace |= Input.GetKeyDown(KeyCode.Space);
-    }
-
     private void FixedUpdate()
     {
         MovedHorizontally?.Invoke(_direction);
@@ -26,5 +20,11 @@ public class PlayerInput : MonoBehaviour
             PressedSpace?.Invoke();
             _pressedSpace = false;
         }
+    }
+
+    private void Update()
+    {
+        _direction = Input.GetAxis(Horizontal);
+        _pressedSpace |= Input.GetKeyDown(KeyCode.Space);
     }
 }
