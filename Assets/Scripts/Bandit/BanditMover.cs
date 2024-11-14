@@ -36,7 +36,7 @@ public class BanditMover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isCollided = collision.gameObject.TryGetComponent(out IDamageable damageable);
+        _isCollided = collision.gameObject.TryGetComponent(out Player player);
     }
 
     private void OnCollisionExit2D()

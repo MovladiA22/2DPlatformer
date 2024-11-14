@@ -2,26 +2,28 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _health;
+    [SerializeField] private int _maxValue;
+    [SerializeField] private int _currentValue;
 
-    public int Value => _health;
+    public int Value => _currentValue;
 
-    public void LostHealth(int amount)
+    public void Lost(int amount)
     {
         if (amount < 0)
             amount = 0;
 
-        _health -= amount;
-        _health = Mathf.Clamp(_health, 0, _maxHealth);
+        _currentValue -= amount;
+        _currentValue = Mathf.Clamp(_currentValue, 0, _maxValue);
     }
 
-    public void ReplenishHealth(int health)
+    public void Replenish(MedKit medKit)
     {
-        if (health < 0)
-            health = 0;
+        int amount = medKit.Value;
 
-        _health += health;
-        _health = Mathf.Clamp(_health, 0, _maxHealth);
+        if (amount < 0)
+            amount = 0;
+
+        _currentValue += amount;
+        _currentValue = Mathf.Clamp(_currentValue, 0, _maxValue);
     }
 }

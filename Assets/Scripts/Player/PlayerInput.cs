@@ -6,25 +6,26 @@ public class PlayerInput : MonoBehaviour
     private const string Horizontal = nameof(Horizontal);
 
     private float _direction = 0f;
-    private bool _pressedSpace = false;
+    private bool _isPressedJumpKey = false;
+    private KeyCode _jumpKey = KeyCode.Space;
 
     public event Action<float> MovedHorizontally;
-    public event Action PressedSpace;
+    public event Action Jumped;
 
     private void FixedUpdate()
     {
         MovedHorizontally?.Invoke(_direction);
 
-        if (_pressedSpace)
+        if (_isPressedJumpKey)
         {
-            PressedSpace?.Invoke();
-            _pressedSpace = false;
+            Jumped?.Invoke();
+            _isPressedJumpKey = false;
         }
     }
 
     private void Update()
     {
         _direction = Input.GetAxis(Horizontal);
-        _pressedSpace |= Input.GetKeyDown(KeyCode.Space);
+        _isPressedJumpKey |= Input.GetKeyDown(_jumpKey);
     }
 }

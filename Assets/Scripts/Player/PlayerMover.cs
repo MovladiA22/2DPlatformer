@@ -1,5 +1,7 @@
 using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
@@ -32,7 +34,6 @@ public class PlayerMover : MonoBehaviour
         Vector2 movement = _rigidbody.velocity;
         movement.x = moveHorizontal * _speed * Time.fixedDeltaTime;
         _rigidbody.velocity = movement;
-
         if (moveHorizontal > 0)
             _angleOfRotationY = 0f;
         else if (moveHorizontal < 0)

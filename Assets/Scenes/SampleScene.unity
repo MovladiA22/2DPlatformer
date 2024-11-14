@@ -181,9 +181,10 @@ GameObject:
   - component: {fileID: 116960147}
   - component: {fileID: 116960148}
   - component: {fileID: 116960149}
-  - component: {fileID: 116960151}
   - component: {fileID: 116960153}
   - component: {fileID: 116960152}
+  - component: {fileID: 116960154}
+  - component: {fileID: 116960155}
   m_Layer: 0
   m_Name: Bandit1
   m_TagString: Untagged
@@ -358,21 +359,6 @@ MonoBehaviour:
   - {fileID: 2002266546}
   _banditsZone: {fileID: 1062981053}
   _speed: 1.5
---- !u!114 &116960151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116960143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0975ac4ecc0d04eb59ada83196e845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 116960148}
-  _banditMover: {fileID: 116960149}
-  _damager: {fileID: 116960152}
 --- !u!114 &116960152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,8 +386,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52726e3aed739c1468a0f122e903a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 40
-  _health: 40
+  _maxValue: 40
+  _currentValue: 40
+--- !u!114 &116960154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116960143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734e1b63f99c5bd48a604e7389973c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 116960148}
+  _damager: {fileID: 116960152}
+--- !u!114 &116960155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116960143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0ee9fbf690dc14389e2fe88b92da16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 116960148}
+  _mover: {fileID: 116960149}
 --- !u!1 &153286697
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +948,7 @@ GameObject:
   - component: {fileID: 784111641}
   - component: {fileID: 784111640}
   - component: {fileID: 784111639}
+  - component: {fileID: 784111643}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1117,7 +1132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f166b9e7375c34b41a493471f518f4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 784111639}
 --- !u!114 &784111637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78267d172b82c1a4f85e4c4aefec2cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 100.3
   _playerInput: {fileID: 784111641}
 --- !u!114 &784111638
 MonoBehaviour:
@@ -1159,8 +1173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52726e3aed739c1468a0f122e903a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _health: 50
+  _maxValue: 50
+  _currentValue: 50
 --- !u!114 &784111640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bfab1252ca55441aa5bec905d25d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collector: {fileID: 784111636}
 --- !u!114 &784111641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,8 +1212,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 784111632}
-  _playerMover: {fileID: 784111637}
   _damager: {fileID: 784111638}
+--- !u!114 &784111643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784111627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42173f4f076d35a49a3abeadcc53c77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 784111632}
+  _mover: {fileID: 784111637}
 --- !u!1 &786531417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,9 +2781,10 @@ GameObject:
   - component: {fileID: 1514556746}
   - component: {fileID: 1514556747}
   - component: {fileID: 1514556748}
-  - component: {fileID: 1514556750}
   - component: {fileID: 1514556752}
   - component: {fileID: 1514556751}
+  - component: {fileID: 1514556753}
+  - component: {fileID: 1514556754}
   m_Layer: 0
   m_Name: Bandit2
   m_TagString: Untagged
@@ -2932,21 +2959,6 @@ MonoBehaviour:
   - {fileID: 848168892}
   _banditsZone: {fileID: 1428036873}
   _speed: 1.5
---- !u!114 &1514556750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514556742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0975ac4ecc0d04eb59ada83196e845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 1514556747}
-  _banditMover: {fileID: 1514556748}
-  _damager: {fileID: 1514556752}
 --- !u!114 &1514556751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2959,8 +2971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52726e3aed739c1468a0f122e903a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 40
-  _health: 40
+  _maxValue: 40
+  _currentValue: 40
 --- !u!114 &1514556752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2976,6 +2988,34 @@ MonoBehaviour:
   _health: {fileID: 1514556751}
   _damage: 10
   _attackDelay: 3
+--- !u!114 &1514556753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514556742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734e1b63f99c5bd48a604e7389973c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1514556747}
+  _damager: {fileID: 1514556752}
+--- !u!114 &1514556754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514556742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0ee9fbf690dc14389e2fe88b92da16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1514556747}
+  _mover: {fileID: 1514556748}
 --- !u!1 &1562162415
 GameObject:
   m_ObjectHideFlags: 0

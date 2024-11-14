@@ -16,12 +16,12 @@ public class PlayerJumper : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInput.PressedSpace += Jump;
+        _playerInput.Jumped += Jump;
     }
 
     private void OnDisable()
     {
-        _playerInput.PressedSpace -= Jump;
+        _playerInput.Jumped -= Jump;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

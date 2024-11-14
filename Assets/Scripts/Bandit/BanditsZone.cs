@@ -8,13 +8,13 @@ public class BanditsZone : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerMover player))
+        if (collision.TryGetComponent(out Player player))
             Entered?.Invoke(collision.transform);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerMover player))
+        if (collision.TryGetComponent(out Player player))
             Left?.Invoke();
     }
 }
