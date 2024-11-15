@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class BanditMover : MonoBehaviour
+public class BanditMover : Mover
 {
     [SerializeField] private Transform[] _routePoints;
     [SerializeField] private BanditsZone _banditsZone;
@@ -12,11 +11,9 @@ public class BanditMover : MonoBehaviour
     private bool _isCollided = false;
     private bool _isPlayerTrigger = false;
 
-    public event Action<bool> Run;
-
     private void Update()
     {
-        Run?.Invoke(_isCollided == false);
+        DeclareEventMoved(_isCollided == false);
 
         if (_isCollided == false)
             MoveToTarget();

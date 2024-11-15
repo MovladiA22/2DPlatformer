@@ -7,7 +7,7 @@ public class PlayerJumper : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
 
     private Rigidbody2D _rigidbody;
-    private bool _isGrounded;
+    private int _numberOfGround = 0;
 
     private void Awake()
     {
@@ -27,18 +27,18 @@ public class PlayerJumper : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Ground>(out Ground ground))
-            _isGrounded = true;
+            _numberOfGround++;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Ground>(out Ground ground))
-            _isGrounded = false;
+            _numberOfGround--;
     }
 
     private void Jump()
     {
-        if (_isGrounded)
+        if (_numberOfGround > 0)
             _rigidbody.AddForce(new Vector2(0, _jumpHeight), ForceMode2D.Impulse);
     }
 }

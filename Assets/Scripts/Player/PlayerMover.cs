@@ -1,18 +1,14 @@
 using System;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : Mover
 {
     [SerializeField] private float _speed;
     [SerializeField] private PlayerInput _playerInput;
 
     private Rigidbody2D _rigidbody;
     private float _angleOfRotationY = 0f;
-
-    public event Action<bool> Run;
 
     private void Awake()
     {
@@ -39,7 +35,7 @@ public class PlayerMover : MonoBehaviour
         else if (moveHorizontal < 0)
             _angleOfRotationY = 180f;
 
-        Run?.Invoke(moveHorizontal != 0);
+        DeclareEventMoved(moveHorizontal != 0);
         transform.eulerAngles = new Vector2(0.0f, _angleOfRotationY);
     }
 }

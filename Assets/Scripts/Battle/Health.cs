@@ -16,10 +16,8 @@ public class Health : MonoBehaviour
         _currentValue = Mathf.Clamp(_currentValue, 0, _maxValue);
     }
 
-    public void Replenish(MedKit medKit)
+    public void Replenish(int amount)
     {
-        int amount = medKit.Value;
-
         if (amount < 0)
             amount = 0;
 

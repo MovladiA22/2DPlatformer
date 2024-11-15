@@ -8,13 +8,19 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _collector.PickedUpMedKit += _health.Replenish;
-        _collector.PickedUpMoney += _wallet.AddMoney;
+        _collector.PickedUpMedKit += ReplenishHealth;
+        _collector.PickedUpMoney += PutMoneyInWallet;
     }
 
     private void OnDisable()
     {
-        _collector.PickedUpMedKit -= _health.Replenish;
-        _collector.PickedUpMoney -= _wallet.AddMoney;
+        _collector.PickedUpMedKit -= ReplenishHealth;
+        _collector.PickedUpMoney -= PutMoneyInWallet;
     }
+
+    private void ReplenishHealth(MedKit medKit) =>
+        _health.Replenish(medKit.Value);
+
+    private void PutMoneyInWallet(GoldCoin goldCoin) =>
+        _wallet.AddMoney(goldCoin.Value);
 }

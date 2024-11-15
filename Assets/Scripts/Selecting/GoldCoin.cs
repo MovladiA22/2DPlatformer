@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Money : MonoBehaviour, ISelected
+public class GoldCoin : MonoBehaviour, ISelected
 {
     [field: SerializeField] public int Value { get; private set; }
 }
