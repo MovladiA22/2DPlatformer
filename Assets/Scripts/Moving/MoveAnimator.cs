@@ -5,18 +5,18 @@ public class MoveAnimator : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Mover _mover;
 
-    private readonly int _isRan = Animator.StringToHash(nameof(_isRan));
+    private readonly int _isRun = Animator.StringToHash(nameof(_isRun));
 
     private void OnEnable()
     {
-        _mover.Moved += ToggleRunning;
+        _mover.Moved += ToggleRun;
     }
 
     private void OnDisable()
     {
-        _mover.Moved -= ToggleRunning;
+        _mover.Moved -= ToggleRun;
     }
 
-    private void ToggleRunning(bool isRan) =>
-        _animator.SetBool(_isRan, isRan);
+    private void ToggleRun(bool isRun) =>
+        _animator.SetBool(_isRun, isRun);
 }

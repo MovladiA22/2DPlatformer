@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -30,6 +29,7 @@ public class PlayerMover : Mover
         Vector2 movement = _rigidbody.velocity;
         movement.x = moveHorizontal * _speed * Time.fixedDeltaTime;
         _rigidbody.velocity = movement;
+
         if (moveHorizontal > 0)
             _angleOfRotationY = 0f;
         else if (moveHorizontal < 0)

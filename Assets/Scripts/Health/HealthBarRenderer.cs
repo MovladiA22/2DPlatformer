@@ -47,6 +47,7 @@ public class HealthBarRenderer : MonoBehaviour
         while (_slider.value != currentHealth)
         {
             _slider.value = Mathf.MoveTowards(_slider.value, currentHealth, _delay);
+
             yield return wait;
         }
     }
