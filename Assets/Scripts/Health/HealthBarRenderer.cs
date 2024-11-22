@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class HealthBarRenderer : MonoBehaviour
 {
-    [SerializeField] private Health Health;
+    [SerializeField] private Health _health;
     [SerializeField] private Slider _slider;
+    [SerializeField] private Transform _camera;
     [SerializeField] private float _delay;
 
     private Coroutine _coroutine;
@@ -15,14 +16,19 @@ public class HealthBarRenderer : MonoBehaviour
         Render();
     }
 
+    private void LateUpdate()
+    {
+        transform.LookAt(transform.position + _camera.forward);
+    }
+
     private void OnEnable()
     {
-        Health.Changed += Render;
+        _health.Changed += Render;
     }
 
     private void OnDisable()
     {
-        Health.Changed -= Render;
+        _health.Changed -= Render;
     }
 
     private void Render() 
@@ -36,7 +42,7 @@ public class HealthBarRenderer : MonoBehaviour
     private IEnumerator RenderingSmooth()
     {
         var wait = new WaitForEndOfFrame();
-        float currentHealth = (float)Health.Value / Health.MaxValue;
+        float currentHealth = (float)_health.CurrentValue / _health.MaxValue;
 
         while (_slider.value != currentHealth)
         {

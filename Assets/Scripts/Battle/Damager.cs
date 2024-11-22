@@ -29,7 +29,7 @@ public class Damager : MonoBehaviour, IDamageable
         if (amount < 0)
             amount = 0;
 
-        if (_health.Value - amount <= 0)
+        if (_health.CurrentValue - amount <= 0)
             Destroy(gameObject);
 
         _health.Lost(amount);

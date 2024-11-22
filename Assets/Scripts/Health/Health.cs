@@ -3,21 +3,18 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxValue;
-    [SerializeField] private int _currentValue;
+    [field: SerializeField] public int CurrentValue { get; private set; }
+    [field: SerializeField] public int MaxValue { get; private set; }
 
     public event Action Changed;
-
-    public int MaxValue => _maxValue;
-    public int Value => _currentValue;
 
     public void Lost(int amount)
     {
         if (amount < 0)
             amount = 0;
 
-        _currentValue -= amount;
-        _currentValue = Mathf.Clamp(_currentValue, 0, _maxValue);
+        CurrentValue -= amount;
+        CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue);
 
         Changed?.Invoke();
     }
@@ -27,8 +24,8 @@ public class Health : MonoBehaviour
         if (amount < 0)
             amount = 0;
 
-        _currentValue += amount;
-        _currentValue = Mathf.Clamp(_currentValue, 0, _maxValue);
+        CurrentValue += amount;
+        CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue);
 
         Changed?.Invoke();
     }
