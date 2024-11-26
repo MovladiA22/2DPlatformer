@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerJumper : MonoBehaviour
 {
     [SerializeField] private float _jumpHeight;
@@ -16,12 +16,12 @@ public class PlayerJumper : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInput.Jumped += Jump;
+        _playerInput.PressedJump += Jump;
     }
 
     private void OnDisable()
     {
-        _playerInput.Jumped -= Jump;
+        _playerInput.PressedJump -= Jump;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

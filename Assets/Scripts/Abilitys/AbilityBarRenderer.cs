@@ -1,23 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class HealthBarRenderer : BarRenderer
+public class AbilityBarRenderer : BarRenderer
 {
-    [SerializeField] private Health _health;
+    [SerializeField] private HealthStretcher _healthStretcher;
 
     private void OnEnable()
     {
-        _health.Changed += Render;
+        _healthStretcher.Activated += Render;
     }
 
     private void OnDisable()
     {
-        _health.Changed -= Render;
+        _healthStretcher.Activated -= Render;
     }
 
     protected override IEnumerator RenderingSmooth(float targetValue)
     {
-        targetValue = targetValue / _health.MaxValue;
+        targetValue = targetValue / _healthStretcher.Duration;
 
         return base.RenderingSmooth(targetValue);
     }

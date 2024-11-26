@@ -8,9 +8,13 @@ public class PlayerInput : MonoBehaviour
     private float _direction = 0f;
     private bool _isPressedJumpKey = false;
     private KeyCode _jumpKey = KeyCode.Space;
+    private KeyCode _attackKey = KeyCode.F;
+    private KeyCode _abilityKey = KeyCode.R;
 
     public event Action<float> MovedHorizontally;
-    public event Action Jumped;
+    public event Action PressedJump;
+    public event Action PressedAttack;
+    public event Action PressedAbility;
 
     private void FixedUpdate()
     {
@@ -18,7 +22,7 @@ public class PlayerInput : MonoBehaviour
 
         if (_isPressedJumpKey)
         {
-            Jumped?.Invoke();
+            PressedJump?.Invoke();
             _isPressedJumpKey = false;
         }
     }
@@ -27,5 +31,11 @@ public class PlayerInput : MonoBehaviour
     {
         _direction = Input.GetAxis(Horizontal);
         _isPressedJumpKey |= Input.GetKeyDown(_jumpKey);
+
+        if(Input.GetKeyDown(_attackKey))
+            PressedAttack?.Invoke();
+
+        if(Input.GetKeyDown(_abilityKey))
+            PressedAbility?.Invoke();
     }
 }
