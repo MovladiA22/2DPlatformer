@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52726e3aed739c1468a0f122e903a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentValue: 40
+  <CurrentValue>k__BackingField: 40
   <MaxValue>k__BackingField: 40
 --- !u!114 &116960154
 MonoBehaviour:
@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52726e3aed739c1468a0f122e903a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentValue: 50
+  <CurrentValue>k__BackingField: 50
   <MaxValue>k__BackingField: 50
 --- !u!114 &784111640
 MonoBehaviour:
@@ -1892,11 +1892,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthStretcherTrigger: {fileID: 1145010418}
+  _playerHealth: {fileID: 784111639}
   _playerInput: {fileID: 784111641}
-  _duration: 6
   _rechargeTime: 4
-  _damageDelay: 1
+  _delay: 1
   _damage: 5
+  <Duration>k__BackingField: 6
 --- !u!1 &786531417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,7 +2015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 950395522}
   _camera: {fileID: 519420032}
-  _delay: 0.005
+  _delay: 0.001
   _healthStretcher: {fileID: 784111646}
 --- !u!114 &950395522
 MonoBehaviour:
@@ -4411,7 +4412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52726e3aed739c1468a0f122e903a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentValue: 40
+  <CurrentValue>k__BackingField: 40
   <MaxValue>k__BackingField: 40
 --- !u!114 &1514556753
 MonoBehaviour:

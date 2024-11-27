@@ -8,11 +8,12 @@ public class BarRenderer : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private float _delay;
 
+    protected float StartValue = 0.0f;
     private Coroutine _coroutine;
 
-    private void Awake()
+    private void Start()
     {
-        Render();
+        _slider.value = StartValue;
     }
 
     private void LateUpdate()
@@ -20,12 +21,12 @@ public class BarRenderer : MonoBehaviour
         transform.LookAt(transform.position + _camera.forward);
     }
 
-    protected void Render(float currentValue = 0.0f)
+    protected void Render()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(RenderingSmooth(currentValue));
+        _coroutine = StartCoroutine(RenderingSmooth(StartValue));
     }
 
     protected virtual IEnumerator RenderingSmooth(float targetValue)

@@ -29,7 +29,7 @@ public class Damager : MonoBehaviour, IDamageable
         if (amount < 0)
             amount = 0;
 
-        if (_health._currentValue - amount <= 0)
+        if (_health.CurrentValue - amount <= 0)
         {
             gameObject.SetActive(false);
             Destroy(gameObject, destroyTime);

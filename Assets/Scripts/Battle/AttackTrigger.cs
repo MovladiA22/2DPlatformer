@@ -11,7 +11,7 @@ public class AttackTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IDamageable damageable))
+        if (collision.gameObject.TryGetComponent<Player>(out Player player) && collision.gameObject.TryGetComponent(out IDamageable damageable))
             Triggerd?.Invoke(damageable);
     }
 

@@ -5,6 +5,11 @@ public class AbilityBarRenderer : BarRenderer
 {
     [SerializeField] private HealthStretcher _healthStretcher;
 
+    private void Awake()
+    {
+        StartValue = _healthStretcher.RemainingDuration / _healthStretcher.Duration;
+    }
+
     private void OnEnable()
     {
         _healthStretcher.Activated += Render;
@@ -17,7 +22,7 @@ public class AbilityBarRenderer : BarRenderer
 
     protected override IEnumerator RenderingSmooth(float targetValue)
     {
-        targetValue = targetValue / _healthStretcher.Duration;
+        targetValue = _healthStretcher.RemainingDuration / _healthStretcher.Duration;
 
         return base.RenderingSmooth(targetValue);
     }
